@@ -1,6 +1,6 @@
 async function getProjects() {
   const res = await fetch(
-    "http://localhost:1337/api/projects?populate=*",
+    `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=*`,
     { cache: "no-store" }
   );
 

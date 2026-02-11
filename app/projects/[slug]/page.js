@@ -1,7 +1,7 @@
 async function getProject(slug) {
 
   const res = await fetch(
-    `http://localhost:1337/api/projects?filters[slug][$eq]=${slug}&populate=*`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
     { cache: "no-store" }
   );
 
@@ -23,7 +23,7 @@ export default async function ProjectPage({ params }) {
   }
 
   const { Title, Description, Cover } = project;
-  const imageUrl = `http://localhost:1337${Cover.url}`;
+  const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}${Cover.url}`;
 
   return (
     <main>

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const path = "http://localhost:1337";
+const path = process.env.NEXT_PUBLIC_API_URL;
 
 async function getProjects() {
   const res = await fetch(
