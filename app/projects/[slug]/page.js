@@ -23,7 +23,7 @@ export default async function ProjectPage({ params }) {
   }
 
   const { Title, Description, Cover } = project;
-  const imageUrl = `${process.env.NEXT_PUBLIC_API_URL}${Cover.url}`;
+  const imageUrl = Cover.url;
 
   return (
     <main>
