@@ -24,7 +24,7 @@ console.log(projects);
       <h1>My Portfolio</h1>
 
       {projects.map((project) => {
-        const imageUrl = `${path}${project.Cover.url}`;
+        const imageUrl = project.Cover.url;
 
         return (
           <article key={project.id}>
