@@ -1,3 +1,6 @@
+import Image from "next/image";
+import cloudinaryUrl from "../../utils";
+
 async function getProject(slug) {
 
   const res = await fetch(
@@ -6,12 +9,12 @@ async function getProject(slug) {
   );
 
   if (!res.ok) {
-    throw new Error("Failed to fetch project");
-  }
+        console.error("Strapi error:", res.status);
+        return [];
+    }
   
   const data = await res.json();
-  console.log(data);
-  return data.data[0];
+  return data.data[0] || [];
 }
 
 export default async function ProjectPage({ params }) {
@@ -30,7 +33,14 @@ export default async function ProjectPage({ params }) {
       <h1>{Title}</h1>
 
       {imageUrl && (
-        <img src={imageUrl} alt={Title} width="400" />
+        <Image
+                        src={cloudinaryUrl(imageUrl)}
+                        alt={Title}
+                        width={600}
+                        height={400}
+                        style={{ objectFit: "cover" }}
+                        priority
+                      />
       )}
 
       <p>{Description}</p>
