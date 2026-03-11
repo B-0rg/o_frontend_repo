@@ -3,7 +3,7 @@ import Image from "next/image";
 import cloudinaryUrl from "./utils";
 
 const path = process.env.NEXT_PUBLIC_API_URL;
-export const revalidate = 60 // regen toutes les 60 secondes
+export const revalidate = 86400 // regen 1x par jour
 
 export const metadata = {
   title: "b0rg — Digital Archive",
@@ -37,9 +37,9 @@ export const metadata = {
 async function getProjects() {
   try{
     const res = await fetch(
-      `${path}/api/projects?populate=*`,{
-      next: { revalidate: 60 } // ISR
-    });
+      `${path}/api/projects?populate=*`,
+      { next: { revalidate: 86400 } }
+    );
   
     if (!res.ok) {
         console.error("Strapi error:", res.status);

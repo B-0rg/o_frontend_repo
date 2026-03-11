@@ -5,7 +5,7 @@ async function getProject(slug) {
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/projects?filters[slug][$eq]=${slug}&populate=*`,
-    { cache: "no-store" }
+    { next: { revalidate: 86400 } }
   );
 
   if (!res.ok) {

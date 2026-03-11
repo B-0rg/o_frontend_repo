@@ -1,7 +1,7 @@
 async function getProjects() {
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/projects?populate=*`,
-    { cache: "no-store" }
+    { next: { revalidate: 86400 } }
   );
 
   const data = await res.json();
