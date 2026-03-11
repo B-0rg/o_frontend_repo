@@ -3,7 +3,7 @@ import Image from "next/image";
 import cloudinaryUrl from "./utils";
 
 const path = process.env.NEXT_PUBLIC_API_URL;
-export const revalidate = 86400 // regen 1x par jour
+// export const revalidate = 86400 // regen 1x par jour
 
 export const metadata = {
   title: "b0rg — Digital Archive",
